@@ -38,7 +38,7 @@ module PackageManager
 
     def self.mapping(project)
       return false unless project["versions"].present?
-      latest_version = project["versions"].to_a.last[1]
+      latest_version = project["versions"][project["dist-tags"]["latest"]]
 
       repo = latest_version.fetch('repository', {})
       repo = repo[0] if repo.is_a?(Array)
